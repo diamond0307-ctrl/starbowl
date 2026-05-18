@@ -1,0 +1,1830 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STARBOWL｜スーパーフードで、カラダの中からキレイに。</title>
+<meta name="description" content="濃厚アサイーで、美味しくヘルシーな毎日を。STARBOWL（スターボウル）公式サイト。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;0,900;1,600&family=Caveat:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================
+   STARBOWL — playful tropical, wood-grain base,
+   purple ink, pink accent. yuppa-style circle
+   mask reveal between sections.
+   =========================================== */
+
+:root{
+  --wood: #f3e7d2;          /* メインの木目クリーム */
+  --wood-2: #ecddc1;        /* 木目濃いめ */
+  --wood-3: #e3d0ad;        /* 木目さらに濃い */
+  --purple: #3d1f5a;        /* ロゴのディープパープル */
+  --purple-2: #5a2d82;
+  --purple-soft: #7b4ba3;
+  --pink: #f5a4b8;          /* 装飾ピンク */
+  --pink-2: #ec7898;
+  --green: #2f7d4f;         /* トロピカルグリーン */
+  --green-2: #4ca06a;
+  --green-leaf: #1f6b3a;
+  --acai: #4a1b3d;
+  --cream: #fbf5e8;
+  --ink: #2a1240;
+  --gold: #c9a04a;
+
+  --f-display: "Fraunces", "Shippori Mincho", serif;
+  --f-body: "Zen Maru Gothic", system-ui, sans-serif;
+  --f-hand: "Caveat", cursive;
+  --f-mincho: "Shippori Mincho", serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-body);
+  color:var(--ink);
+  background:var(--wood);
+  font-weight:500;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- WOOD GRAIN TEXTURE ---------- */
+.wood-bg{
+  position:relative;
+  background:
+    /* knots */
+    radial-gradient(ellipse 80px 30px at 15% 22%, rgba(165,120,70,.12), transparent 70%),
+    radial-gradient(ellipse 60px 20px at 85% 60%, rgba(165,120,70,.10), transparent 70%),
+    radial-gradient(ellipse 100px 25px at 50% 85%, rgba(165,120,70,.08), transparent 70%),
+    /* grain lines */
+    repeating-linear-gradient(
+      92deg,
+      rgba(180,135,80,0) 0px,
+      rgba(180,135,80,0) 18px,
+      rgba(180,135,80,.06) 19px,
+      rgba(180,135,80,.06) 20px,
+      rgba(180,135,80,0) 21px,
+      rgba(180,135,80,0) 60px,
+      rgba(160,115,65,.04) 61px,
+      rgba(160,115,65,.04) 62px
+    ),
+    var(--wood);
+}
+.wood-bg::after{
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(0,0,0,.015) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,.015) 0 1px, transparent 1px);
+  background-size:8px 8px, 12px 12px;
+  pointer-events:none;
+}
+
+/* ---------- FIXED INFO BAR (yuppa-style bottom) ---------- */
+.info-bar{
+  position:fixed;
+  bottom:18px; left:50%;
+  transform:translateX(-50%);
+  z-index:60;
+  width:min(95%, 1100px);
+  background:var(--cream);
+  border:2px solid var(--purple);
+  border-radius:999px;
+  padding:10px 28px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  font-family:var(--f-body);
+  font-size:13px;
+  color:var(--purple);
+  box-shadow:0 10px 30px rgba(61,31,90,.18);
+}
+.info-bar b{font-weight:700; letter-spacing:.05em}
+.info-bar .sep{opacity:.3}
+.info-bar .map-btn{
+  background:var(--pink-2); color:#fff;
+  padding:6px 14px; border-radius:999px;
+  font-weight:700; font-size:12px;
+  text-decoration:none;
+  display:inline-flex; align-items:center; gap:6px;
+  transition:transform .2s;
+}
+.info-bar .map-btn:hover{transform:translateY(-2px)}
+@media(max-width:760px){
+  .info-bar{font-size:11px; padding:8px 16px; gap:10px}
+  .info-bar .hide-sm{display:none}
+  .logo-mark{width:60px; height:60px; top:18px; left:18px}
+  .logo-mark .star-mini{font-size:16px}
+  .logo-mark .name-mini{font-size:7px}
+  .logo-mark .tag-mini{font-size:5px}
+  .lang-toggle{top:22px; right:78px; font-size:10px}
+  .lang-toggle span{padding:4px 9px}
+  .hamburger{top:18px; right:18px; width:44px; height:44px}
+}
+
+/* ---------- LOGO MARK (top-left) ---------- */
+.logo-mark{
+  position:fixed;
+  top:24px; left:30px;
+  z-index:50;
+  width:78px; height:78px;
+  background:var(--cream);
+  border:2.5px solid var(--purple);
+  border-radius:50%;
+  display:grid; place-items:center;
+  text-align:center;
+  font-family:var(--f-body);
+  color:var(--purple);
+  line-height:1;
+  box-shadow:0 6px 20px rgba(61,31,90,.15);
+}
+.logo-mark .star-mini{
+  font-size:22px; line-height:1;
+}
+.logo-mark .name-mini{
+  font-size:9px; font-weight:900; letter-spacing:.12em;
+  margin-top:3px;
+}
+.logo-mark .tag-mini{
+  font-size:6.5px; letter-spacing:.05em;
+  margin-top:2px; opacity:.7;
+}
+
+/* ---------- LANG TOGGLE (top-right) ---------- */
+.lang-toggle{
+  position:fixed;
+  top:28px; right:90px;
+  z-index:50;
+  display:flex;
+  background:var(--cream);
+  border:2px solid var(--purple);
+  border-radius:999px;
+  padding:3px;
+  font-family:var(--f-body);
+  font-weight:700; font-size:12px;
+}
+.lang-toggle span{
+  padding:6px 12px;
+  border-radius:999px;
+  color:var(--purple);
+  cursor:pointer;
+}
+.lang-toggle span.active{
+  background:var(--pink-2); color:#fff;
+}
+
+/* ---------- HAMBURGER ---------- */
+.hamburger{
+  position:fixed;
+  top:24px; right:28px;
+  z-index:55;
+  width:52px; height:52px;
+  background:var(--purple);
+  border-radius:14px;
+  display:grid; place-items:center;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(61,31,90,.25);
+}
+.hamburger span{
+  display:block; width:22px; height:2.5px;
+  background:var(--cream); border-radius:2px;
+  position:relative;
+}
+.hamburger span::before,.hamburger span::after{
+  content:""; position:absolute; left:0; width:22px; height:2.5px;
+  background:var(--cream); border-radius:2px;
+}
+.hamburger span::before{top:-7px}
+.hamburger span::after{top:7px}
+
+/* ---------- CHARACTER (right-bottom mascot) ---------- */
+.mascot{
+  position:fixed;
+  right:18px; bottom:78px;
+  z-index:58;
+  width:62px; height:62px;
+  animation:bob 2.6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-8px) rotate(3deg)}
+}
+
+/* ===========================================
+   SECTION 1 — HERO
+   =========================================== */
+.hero{
+  position:relative;
+  height:100vh; min-height:680px;
+  background:
+    radial-gradient(circle at 50% 60%, rgba(245,164,184,.25), transparent 60%),
+    linear-gradient(160deg, #4a2570 0%, #3d1f5a 50%, #2c1442 100%);
+  overflow:hidden;
+  z-index:1;
+}
+
+/* tropical leaves decoration */
+.leaf{
+  position:absolute;
+  pointer-events:none;
+  opacity:.85;
+}
+.leaf-1{top:-30px; left:-40px; width:280px; transform:rotate(-15deg); animation:sway1 6s ease-in-out infinite}
+.leaf-2{top:40px; right:-60px; width:320px; transform:rotate(20deg); animation:sway2 7s ease-in-out infinite}
+.leaf-3{bottom:120px; left:-60px; width:240px; transform:rotate(140deg); animation:sway1 8s ease-in-out infinite reverse}
+.leaf-4{bottom:80px; right:-40px; width:220px; transform:rotate(-130deg); animation:sway2 5s ease-in-out infinite}
+@keyframes sway1{0%,100%{transform:rotate(-15deg) translateY(0)} 50%{transform:rotate(-10deg) translateY(8px)}}
+@keyframes sway2{0%,100%{transform:rotate(20deg) translateY(0)} 50%{transform:rotate(15deg) translateY(-8px)}}
+
+/* sparkle dots */
+.sparkles{position:absolute; inset:0; pointer-events:none}
+.sparkle{
+  position:absolute;
+  width:6px; height:6px;
+  background:var(--pink);
+  border-radius:50%;
+  animation:twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.3; transform:scale(.8)}
+  50%{opacity:1; transform:scale(1.3)}
+}
+
+/* big watermark wordmark */
+.hero-mark{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:clamp(180px, 28vw, 420px);
+  color:rgba(245,229,200,.06);
+  letter-spacing:-.04em;
+  line-height:.85;
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+/* hero content */
+.hero-content{
+  position:relative;
+  z-index:5;
+  height:100%;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  padding:0 30px;
+  text-align:center;
+  color:var(--cream);
+}
+.hero-tag{
+  font-family:var(--f-hand);
+  font-size:clamp(22px, 2.4vw, 32px);
+  color:var(--pink);
+  margin-bottom:8px;
+  transform:rotate(-2deg);
+}
+.hero-title{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:clamp(72px, 13vw, 200px);
+  letter-spacing:-.02em;
+  line-height:.9;
+  color:var(--cream);
+  position:relative;
+  display:inline-block;
+}
+.hero-title .star{
+  display:inline-block;
+  color:var(--pink);
+  transform:translateY(-12%) rotate(-8deg);
+  font-size:.55em;
+  margin:0 -.02em;
+  animation:starSpin 4s ease-in-out infinite;
+}
+@keyframes starSpin{
+  0%,100%{transform:translateY(-12%) rotate(-8deg) scale(1)}
+  50%{transform:translateY(-15%) rotate(8deg) scale(1.08)}
+}
+.hero-sub{
+  margin-top:18px;
+  font-family:var(--f-body);
+  font-size:clamp(15px, 1.4vw, 19px);
+  font-weight:700;
+  background:var(--pink-2);
+  color:#fff;
+  padding:10px 26px;
+  border-radius:999px;
+  display:inline-block;
+  transform:rotate(-1deg);
+  box-shadow:0 8px 20px rgba(236,120,152,.4);
+}
+.hero-bowls{
+  margin-top:36px;
+  display:flex; gap:18px;
+  perspective:800px;
+}
+.hero-bowl{
+  width:clamp(80px, 11vw, 140px);
+  height:clamp(80px, 11vw, 140px);
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #8a3a6e, #4a1b3d 60%, #2a0f24);
+  position:relative;
+  box-shadow:
+    inset 0 -10px 20px rgba(0,0,0,.4),
+    inset 0 4px 8px rgba(255,255,255,.15),
+    0 18px 40px rgba(0,0,0,.4);
+  animation:bowlFloat 3.5s ease-in-out infinite;
+}
+.hero-bowl::before{
+  content:"";
+  position:absolute;
+  top:-8px; left:50%;
+  transform:translateX(-50%);
+  width:90%; height:14px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 4px 8px rgba(0,0,0,.2);
+}
+.hero-bowl:nth-child(1){animation-delay:0s}
+.hero-bowl:nth-child(2){animation-delay:.5s}
+.hero-bowl:nth-child(3){animation-delay:1s}
+@keyframes bowlFloat{
+  0%,100%{transform:translateY(0) rotateY(0deg)}
+  50%{transform:translateY(-14px) rotateY(8deg)}
+}
+
+/* scroll down */
+.scroll-down{
+  position:absolute;
+  bottom:90px; left:50%;
+  transform:translateX(-50%);
+  z-index:6;
+  font-family:var(--f-body); font-size:11px;
+  letter-spacing:.3em;
+  color:var(--cream);
+  text-align:center;
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+.scroll-down .line{
+  display:block;
+  width:1px; height:40px;
+  background:var(--cream);
+  margin:10px auto 0;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.5; transform:translate(-50%,0)}
+  50%{opacity:1; transform:translate(-50%,8px)}
+}
+
+/* ===========================================
+   CIRCLE MASK REVEAL — yuppa signature
+   Each section after hero animates in
+   via a circle that grows from bottom.
+   =========================================== */
+.section-reveal{
+  position:relative;
+  overflow:hidden;
+  z-index:2;
+}
+.section-reveal .reveal-inner{
+  position:relative;
+  z-index:2;
+  /* clip-path animates from a small circle at bottom-center
+     to a large one covering the whole viewport. */
+  clip-path: circle(0% at 50% 100%);
+  transition: clip-path 1.4s cubic-bezier(.65,.05,.36,1);
+  will-change: clip-path;
+}
+.section-reveal.is-in .reveal-inner{
+  clip-path: circle(150% at 50% 100%);
+}
+
+/* For subsequent sections we want to start the circle
+   from where the previous section ended (top-center).
+   Alternating direction keeps it dynamic. */
+.section-reveal.from-top .reveal-inner{
+  clip-path: circle(0% at 50% 0%);
+}
+.section-reveal.from-top.is-in .reveal-inner{
+  clip-path: circle(150% at 50% 0%);
+}
+
+/* ===========================================
+   SECTION 2 — CONCEPT
+   =========================================== */
+.concept{
+  min-height:100vh;
+  padding:140px 30px 180px;
+  position:relative;
+}
+.concept-inner{
+  max-width:1200px; margin:0 auto;
+  text-align:center;
+  position:relative;
+}
+.concept-tag{
+  font-family:var(--f-hand);
+  font-size:32px;
+  color:var(--pink-2);
+  transform:rotate(-2deg);
+  display:inline-block;
+  margin-bottom:8px;
+}
+.concept-title{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:clamp(40px, 6vw, 80px);
+  color:var(--purple);
+  line-height:1.15;
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+}
+.concept-title .accent{
+  background:linear-gradient(transparent 60%, rgba(245,164,184,.6) 60%);
+  padding:0 .1em;
+}
+.concept-sub{
+  display:inline-block;
+  background:var(--purple);
+  color:var(--cream);
+  font-family:var(--f-body); font-weight:700;
+  padding:8px 22px;
+  border-radius:8px;
+  font-size:15px;
+  transform:rotate(-.5deg);
+}
+.concept-body{
+  margin-top:60px;
+  max-width:640px;
+  margin-left:auto; margin-right:auto;
+  font-size:17px; line-height:2.1;
+  color:var(--purple);
+  font-family:var(--f-body); font-weight:500;
+}
+.concept-body p+p{margin-top:24px}
+
+/* floating fruit decorations */
+.fruit{
+  position:absolute;
+  pointer-events:none;
+  animation:floatSlow 5s ease-in-out infinite;
+}
+.fruit svg{display:block}
+@keyframes floatSlow{
+  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
+  50%{transform:translateY(-18px) rotate(calc(var(--rot,0deg) + 8deg))}
+}
+
+/* ===========================================
+   SECTION 3 — BIG BOWL SHOWCASE (acai bowl ring)
+   =========================================== */
+.showcase{
+  min-height:100vh;
+  padding:120px 30px;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(61,31,90,.04), transparent 70%);
+}
+.showcase-inner{
+  position:relative; width:100%; max-width:1100px;
+  display:grid; grid-template-columns:1fr 1.2fr; gap:60px;
+  align-items:center;
+}
+@media(max-width:860px){
+  .showcase-inner{grid-template-columns:1fr; text-align:center}
+}
+.showcase-text h2{
+  font-family:var(--f-display);
+  font-size:clamp(48px, 7vw, 90px);
+  color:var(--purple);
+  font-weight:900; line-height:.95;
+  letter-spacing:-.02em;
+  margin-bottom:18px;
+}
+.showcase-text h2 em{
+  font-style:italic;
+  font-family:var(--f-display);
+  color:var(--pink-2);
+  font-weight:600;
+}
+.showcase-text .label{
+  display:inline-block;
+  font-family:var(--f-hand);
+  color:var(--green-leaf);
+  font-size:28px;
+  transform:rotate(-3deg);
+  margin-bottom:12px;
+}
+.showcase-text p{
+  color:var(--purple);
+  max-width:420px;
+  font-size:16px;
+  margin:0 auto;
+}
+.showcase-text ul{
+  list-style:none;
+  margin-top:24px;
+  display:flex; flex-wrap:wrap; gap:8px;
+  justify-content:flex-start;
+}
+@media(max-width:860px){.showcase-text ul{justify-content:center}}
+.showcase-text ul li{
+  background:var(--cream);
+  border:2px solid var(--purple);
+  color:var(--purple);
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px; font-weight:700;
+}
+
+.showcase-visual{
+  position:relative;
+  aspect-ratio:1;
+  display:grid; place-items:center;
+}
+.showcase-bowl{
+  position:relative; z-index:2;
+  width:80%; aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%, #6e2858, #4a1b3d 55%, #2a0f24 100%);
+  box-shadow:
+    inset 0 -20px 40px rgba(0,0,0,.5),
+    inset 0 8px 20px rgba(255,255,255,.18),
+    0 30px 60px rgba(0,0,0,.3);
+  display:grid; place-items:center;
+  animation:bowlBreathe 6s ease-in-out infinite;
+}
+.showcase-bowl::before{
+  content:"";
+  position:absolute;
+  top:-12px; left:50%;
+  transform:translateX(-50%);
+  width:96%; height:24px;
+  background:linear-gradient(180deg, #fff, #f0f0f0);
+  border-radius:50%;
+  box-shadow:0 6px 12px rgba(0,0,0,.2);
+}
+@keyframes bowlBreathe{
+  0%,100%{transform:scale(1) translateY(0)}
+  50%{transform:scale(1.02) translateY(-6px)}
+}
+@keyframes slowSpin{to{transform:rotate(360deg)}}
+
+/* fruit toppings positioned on bowl */
+.topping{
+  position:absolute;
+  font-size:42px;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.3));
+  animation:floatSlow 4s ease-in-out infinite;
+}
+.t1{top:8%; left:30%; --rot:-10deg}
+.t2{top:18%; right:25%; --rot:15deg; animation-delay:.5s}
+.t3{top:45%; left:18%; --rot:20deg; animation-delay:1s}
+.t4{bottom:25%; right:18%; --rot:-15deg; animation-delay:1.5s}
+.t5{bottom:14%; left:38%; --rot:8deg; animation-delay:2s}
+.t6{top:32%; right:38%; --rot:5deg; animation-delay:.8s; font-size:36px}
+.t7{top:55%; right:30%; --rot:-12deg; animation-delay:1.3s; font-size:36px}
+.t8{bottom:35%; left:30%; --rot:18deg; animation-delay:.3s; font-size:34px}
+
+/* orbit badges (floating around bowl) */
+.orbit-badge{
+  position:absolute;
+  z-index:3;
+  width:90px; height:90px;
+  border-radius:50%;
+  background:var(--pink-2);
+  color:#fff;
+  display:grid; place-items:center;
+  font-family:var(--f-body);
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.05em;
+  text-align:center;
+  line-height:1.2;
+  box-shadow:0 10px 24px rgba(236,120,152,.4);
+}
+.orbit-b1{top:5%; right:-5%; background:var(--pink-2); transform:rotate(-10deg); animation:floatSlow 4s ease-in-out infinite}
+.orbit-b2{bottom:8%; left:-8%; background:var(--green); color:#fff; transform:rotate(8deg); animation:floatSlow 5s ease-in-out infinite reverse}
+.orbit-b3{top:42%; left:-3%; background:var(--gold); color:var(--purple); transform:rotate(-5deg); animation:floatSlow 4.5s ease-in-out infinite; width:72px; height:72px; font-size:10px}
+
+/* orbit ring */
+.orbit-ring{
+  position:absolute; inset:5%;
+  border:2px dashed rgba(61,31,90,.2);
+  border-radius:50%;
+  animation:slowSpin 40s linear infinite reverse;
+}
+
+/* ===========================================
+   SECTION 4 — MENU CARDS (横スクロール)
+   =========================================== */
+.menu{
+  min-height:100vh;
+  padding:120px 0 160px;
+  position:relative;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(245,164,184,.08), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(47,125,79,.08), transparent 50%);
+}
+.menu-head{
+  text-align:center;
+  max-width:900px; margin:0 auto 70px;
+  padding:0 30px;
+}
+.menu-head .badge{
+  display:inline-block;
+  background:var(--cream);
+  border:2px solid var(--purple);
+  border-radius:999px;
+  padding:8px 22px;
+  color:var(--purple);
+  font-family:var(--f-body); font-weight:700;
+  font-size:13px;
+  letter-spacing:.15em;
+  margin-bottom:18px;
+}
+.menu-head h2{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:clamp(60px, 9vw, 130px);
+  color:var(--purple);
+  letter-spacing:-.02em;
+  line-height:.95;
+  text-transform:uppercase;
+}
+.menu-head h2 .o{
+  display:inline-block;
+  position:relative;
+  width:.85em; height:.85em;
+  vertical-align:-.05em;
+  background:
+    radial-gradient(circle at 35% 30%, #6e2858 0%, #4a1b3d 55%, #2a0f24 100%);
+  border-radius:50%;
+  border-top:.13em solid #fff;
+  box-shadow:
+    inset 0 -.04em .08em rgba(0,0,0,.4),
+    inset 0 .02em .04em rgba(255,255,255,.2);
+  margin:0 .04em;
+}
+.menu-head h2 .o::after{
+  content:"★";
+  position:absolute;
+  inset:0;
+  display:grid; place-items:center;
+  color:var(--pink);
+  font-size:.4em;
+  -webkit-text-fill-color:var(--pink);
+  text-shadow:0 2px 4px rgba(0,0,0,.4);
+}
+.menu-head p{
+  margin-top:18px;
+  color:var(--purple);
+  font-size:16px;
+}
+
+.menu-scroller{
+  display:flex;
+  gap:24px;
+  padding:20px 8vw 40px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+}
+.menu-scroller::-webkit-scrollbar{display:none}
+
+.menu-card{
+  flex:0 0 380px;
+  scroll-snap-align:center;
+  border-radius:32px;
+  padding:36px 30px 30px;
+  position:relative;
+  color:var(--cream);
+  box-shadow:0 24px 50px rgba(61,31,90,.18);
+  transform:rotate(-1.5deg);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  overflow:hidden;
+  min-height:520px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.menu-card:nth-child(even){transform:rotate(1.8deg)}
+.menu-card:hover{transform:rotate(0) scale(1.03)}
+
+.menu-card.rich{background:linear-gradient(160deg, #5a2d82, #3d1f5a)}
+.menu-card.beauty{background:linear-gradient(160deg, var(--green-2), var(--green-leaf))}
+.menu-card.my{background:linear-gradient(160deg, var(--pink), var(--pink-2)); color:var(--purple)}
+
+.menu-card .tag-top{
+  font-family:var(--f-body);
+  font-weight:700; font-size:11px;
+  letter-spacing:.2em;
+  opacity:.85;
+}
+.menu-card h3{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:46px;
+  line-height:.95;
+  letter-spacing:-.01em;
+  margin-top:6px;
+  margin-bottom:4px;
+}
+.menu-card h3 .jp{
+  display:block;
+  font-family:var(--f-hand);
+  font-size:30px;
+  font-weight:500;
+  letter-spacing:0;
+  opacity:.95;
+  margin-top:6px;
+}
+.menu-card .bowl-vis{
+  margin:20px auto;
+  width:170px; height:170px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #6e2858, #2a0f24);
+  box-shadow:inset 0 -12px 24px rgba(0,0,0,.4), inset 0 4px 10px rgba(255,255,255,.18);
+  position:relative;
+}
+.menu-card .bowl-vis::before{
+  content:"";
+  position:absolute;
+  top:-7px; left:50%;
+  transform:translateX(-50%);
+  width:92%; height:14px;
+  background:#fff;
+  border-radius:50%;
+}
+.menu-card .bowl-vis .topp{
+  position:absolute;
+  font-size:30px;
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.3));
+}
+.menu-card .desc{
+  font-size:13px;
+  opacity:.9;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.menu-card .price{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:42px;
+  letter-spacing:-.02em;
+}
+.menu-card .price .tax{
+  font-size:13px; opacity:.7; font-weight:600;
+}
+.menu-card .plus{
+  position:absolute;
+  bottom:24px; right:24px;
+  width:48px; height:48px;
+  background:var(--cream);
+  color:var(--purple);
+  border-radius:50%;
+  display:grid; place-items:center;
+  font-size:24px; font-weight:700;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.menu-card .plus:hover{transform:rotate(90deg) scale(1.1)}
+
+.menu-nav{
+  display:flex; justify-content:center; gap:14px;
+  margin-top:30px;
+}
+.menu-nav button{
+  background:var(--purple); color:var(--cream);
+  border:none;
+  width:54px; height:54px;
+  border-radius:50%;
+  font-size:20px; cursor:pointer;
+  transition:transform .2s;
+  font-family:var(--f-body);
+}
+.menu-nav .all{
+  width:auto; padding:0 28px;
+  font-weight:700; font-size:14px;
+}
+.menu-nav button:hover{transform:translateY(-3px); background:var(--purple-2)}
+
+/* ===========================================
+   SECTION 5 — SIDE MENU
+   =========================================== */
+.side{
+  min-height:80vh;
+  padding:140px 30px;
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(47,125,79,.12), transparent 60%);
+}
+.side-inner{max-width:1000px; margin:0 auto}
+.side-head{text-align:center; margin-bottom:60px}
+.side-head .deco{
+  font-family:var(--f-hand);
+  font-size:28px;
+  color:var(--green);
+}
+.side-head h2{
+  font-family:var(--f-display);
+  font-size:clamp(40px, 6vw, 64px);
+  color:var(--purple);
+  font-weight:900;
+  letter-spacing:-.01em;
+  margin:6px 0 4px;
+}
+
+.side-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:32px;
+}
+@media(max-width:760px){.side-grid{grid-template-columns:1fr; max-width:300px; margin:0 auto}}
+.side-item{
+  background:var(--cream);
+  border:3px solid var(--purple);
+  border-radius:24px;
+  padding:36px 24px 28px;
+  text-align:center;
+  position:relative;
+  transition:transform .3s;
+}
+.side-item:hover{transform:translateY(-6px)}
+.side-item .cat{
+  font-family:var(--f-hand);
+  color:var(--green);
+  font-size:26px;
+  transform:rotate(-3deg);
+  display:inline-block;
+}
+.side-item .cup{
+  width:110px; height:140px;
+  margin:40px auto 16px;
+  position:relative;
+}
+
+/* smoothie cup */
+.cup-smoothie{
+  background:linear-gradient(180deg, #f5dab0 0%, #e8c898 100%);
+  border-radius:10px 10px 30px 30px;
+  border:3px solid #d4a878;
+}
+.cup-smoothie::before{
+  /* lid */
+  content:""; position:absolute;
+  top:-10px; left:-6px; right:-6px;
+  height:14px;
+  background:linear-gradient(180deg, var(--cream), #e8dec0);
+  border:2.5px solid var(--purple);
+  border-radius:6px 6px 0 0;
+}
+.cup-smoothie::after{
+  /* straw */
+  content:""; position:absolute;
+  top:-40px; left:25%;
+  width:8px; height:50px;
+  background:repeating-linear-gradient(180deg,
+    var(--pink-2) 0 8px,
+    var(--cream) 8px 16px);
+  border-radius:3px;
+  transform:rotate(-8deg);
+  z-index:-1;
+}
+
+/* hot coffee cup */
+.cup-hot{
+  background:linear-gradient(180deg, #a0522d 0%, #6b3a1f 100%);
+  border-radius:6px 6px 22px 22px;
+  overflow:visible;
+}
+.cup-hot::before{
+  /* coffee surface (inside cup top) */
+  content:""; position:absolute;
+  top:4px; left:5px; right:5px;
+  height:14px;
+  background:radial-gradient(ellipse at center, #2a1408 30%, #1a0a04);
+  border-radius:50%;
+  box-shadow:inset 0 3px 6px rgba(0,0,0,.6);
+  z-index:2;
+}
+.cup-hot::after{
+  /* sleeve */
+  content:""; position:absolute;
+  top:42%; left:-3px; right:-3px;
+  height:32px;
+  background:linear-gradient(180deg, #8b4513, #6b3410);
+  border:2px solid #5a2d0a;
+  border-radius:4px;
+  z-index:1;
+}
+/* steam */
+.cup-hot .steam{
+  position:absolute;
+  top:-35px; left:50%;
+  transform:translateX(-50%);
+  display:flex; gap:5px;
+  z-index:3;
+}
+.cup-hot .steam span{
+  display:block;
+  width:5px; height:22px;
+  background:rgba(120, 80, 50, .5);
+  border-radius:50%;
+  animation:steamUp 2s ease-in-out infinite;
+}
+.cup-hot .steam span:nth-child(1){animation-delay:0s}
+.cup-hot .steam span:nth-child(2){animation-delay:.3s}
+.cup-hot .steam span:nth-child(3){animation-delay:.6s}
+@keyframes steamUp{
+  0%{opacity:0; transform:translateY(15px) scale(.5)}
+  40%{opacity:.8}
+  100%{opacity:0; transform:translateY(-25px) scale(1.6)}
+}
+
+/* iced coffee cup (transparent with ice) */
+.cup-iced{
+  background:linear-gradient(180deg,
+    rgba(80,40,20,.7) 0%,
+    rgba(60,30,15,.9) 30%,
+    rgba(80,40,20,.9) 100%);
+  border-radius:6px 6px 28px 28px;
+  border:3px solid rgba(212, 194, 152, .8);
+  position:relative;
+  overflow:hidden;
+}
+.cup-iced::before{
+  /* dome lid */
+  content:""; position:absolute;
+  top:-14px; left:-4px; right:-4px;
+  height:22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.15));
+  border:2px solid rgba(180,160,130,.6);
+  border-radius:50% 50% 0 0;
+  z-index:1;
+}
+.cup-iced::after{
+  /* ice cubes */
+  content:""; position:absolute;
+  top:25%; left:18%;
+  width:18px; height:18px;
+  background:rgba(255,255,255,.45);
+  border-radius:3px;
+  box-shadow:
+    25px 12px 0 rgba(255,255,255,.35),
+    -2px 32px 0 rgba(255,255,255,.4),
+    36px -8px 0 rgba(255,255,255,.3);
+  transform:rotate(15deg);
+  z-index:2;
+}
+/* straw for iced — placed in container above cup */
+.side-item .cup-iced-wrap{
+  position:relative;
+  width:110px; height:140px;
+  margin:40px auto 16px;
+}
+.side-item .cup-iced-wrap .straw{
+  position:absolute;
+  top:-30px; left:60%;
+  width:6px; height:60px;
+  background:var(--purple);
+  border-radius:3px;
+  transform:rotate(10deg);
+  z-index:3;
+}
+.side-item .cup-iced-wrap .cup-iced{
+  position:absolute; inset:0;
+}
+/* drop on table */
+.side-item .cup-hot::before{transition:none}
+.side-item h4{
+  font-family:var(--f-display);
+  font-weight:800;
+  color:var(--purple);
+  font-size:18px;
+  margin-bottom:6px;
+}
+.side-item .p{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-size:32px;
+  color:var(--purple);
+  letter-spacing:-.02em;
+}
+
+/* ===========================================
+   SECTION 6 — BENEFITS (アサイーってすごい)
+   =========================================== */
+.benefits{
+  padding:120px 30px 160px;
+  position:relative;
+  background:
+    linear-gradient(180deg, transparent, rgba(61,31,90,.04) 40%, transparent);
+}
+.benefits-inner{
+  max-width:1100px; margin:0 auto;
+  background:var(--purple);
+  border-radius:40px;
+  padding:60px 50px;
+  color:var(--cream);
+  position:relative;
+  box-shadow:0 30px 60px rgba(61,31,90,.3);
+}
+.benefits-inner::before{
+  content:"";
+  position:absolute;
+  top:-20px; left:-20px; right:-20px; bottom:-20px;
+  border:2px dashed var(--purple);
+  border-radius:50px;
+  opacity:.3;
+  pointer-events:none;
+}
+.benefits-head{
+  text-align:center;
+  margin-bottom:50px;
+}
+.benefits-head .ribbon{
+  display:inline-block;
+  background:var(--pink-2);
+  padding:6px 22px;
+  border-radius:8px;
+  font-family:var(--f-hand);
+  font-size:24px;
+  transform:rotate(-2deg);
+  color:#fff;
+}
+.benefits-head h2{
+  font-family:var(--f-display);
+  font-size:clamp(40px, 6vw, 64px);
+  font-weight:900;
+  margin-top:14px;
+  letter-spacing:-.01em;
+}
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:30px;
+}
+@media(max-width:860px){.benefits-grid{grid-template-columns:repeat(2, 1fr)}}
+@media(max-width:480px){.benefits-grid{grid-template-columns:1fr}}
+.benefit{
+  text-align:center;
+  position:relative;
+}
+.benefit .ic{
+  width:72px; height:72px;
+  margin:0 auto 16px;
+  background:var(--pink-2);
+  border-radius:50%;
+  display:grid; place-items:center;
+  font-size:32px;
+  animation:floatSlow 3.5s ease-in-out infinite;
+}
+.benefit:nth-child(2) .ic{animation-delay:.4s}
+.benefit:nth-child(3) .ic{animation-delay:.8s}
+.benefit:nth-child(4) .ic{animation-delay:1.2s}
+.benefit h4{
+  font-family:var(--f-display);
+  font-weight:800;
+  font-size:17px;
+  margin-bottom:6px;
+  color:var(--pink);
+}
+.benefit p{
+  font-size:13px;
+  line-height:1.7;
+  opacity:.9;
+}
+.benefits-foot{
+  text-align:center;
+  margin-top:50px;
+  font-family:var(--f-hand);
+  font-size:28px;
+  color:var(--pink);
+}
+
+/* ===========================================
+   SECTION 7 — SHOP INFO
+   =========================================== */
+.shop{
+  min-height:90vh;
+  padding:140px 30px;
+  position:relative;
+}
+.shop-inner{
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1.1fr;
+  gap:60px; align-items:center;
+}
+@media(max-width:860px){.shop-inner{grid-template-columns:1fr}}
+.shop-text h2{
+  font-family:var(--f-display);
+  font-size:clamp(80px, 12vw, 160px);
+  color:var(--purple);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:.9;
+}
+.shop-text .deco{
+  font-family:var(--f-hand);
+  font-size:30px;
+  color:var(--pink-2);
+  transform:rotate(-2deg);
+  display:inline-block;
+  margin-bottom:6px;
+}
+.shop-text p{
+  margin-top:24px;
+  color:var(--purple);
+  font-size:16px;
+  max-width:440px;
+  line-height:1.9;
+}
+.shop-text .info-list{
+  margin-top:30px;
+  list-style:none;
+}
+.shop-text .info-list li{
+  display:flex; gap:18px;
+  padding:14px 0;
+  border-bottom:1.5px dashed var(--purple);
+  color:var(--purple);
+  font-size:14px;
+}
+.shop-text .info-list .k{
+  flex:0 0 90px;
+  font-weight:800;
+  letter-spacing:.1em;
+}
+.shop-cta{
+  margin-top:34px;
+  display:inline-flex; align-items:center; gap:14px;
+  background:var(--purple);
+  color:var(--cream);
+  padding:18px 32px;
+  border-radius:999px;
+  text-decoration:none;
+  font-family:var(--f-body); font-weight:700;
+  font-size:15px;
+  transition:transform .25s;
+}
+.shop-cta:hover{transform:translateX(6px)}
+.shop-cta .arrow{
+  width:34px; height:34px;
+  background:var(--pink-2);
+  border-radius:50%;
+  display:grid; place-items:center;
+  color:#fff;
+}
+
+.shop-visual{
+  aspect-ratio:4/5;
+  border-radius:30px;
+  background:
+    linear-gradient(180deg, #f5d6a0 0%, #e8b878 60%, #c89048 100%);
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(61,31,90,.25);
+  display:flex; flex-direction:column;
+}
+
+/* sky/awning */
+.shop-visual .awning{
+  height:18%;
+  background:repeating-linear-gradient(90deg,
+    var(--purple) 0 30px,
+    var(--cream) 30px 60px);
+  position:relative;
+  flex:0 0 18%;
+}
+.shop-visual .awning::after{
+  content:"";
+  position:absolute;
+  bottom:-15px; left:0; right:0; height:15px;
+  background:
+    radial-gradient(circle at 15px 0, var(--purple) 14px, transparent 15px),
+    radial-gradient(circle at 45px 0, var(--cream) 14px, transparent 15px),
+    radial-gradient(circle at 75px 0, var(--purple) 14px, transparent 15px),
+    radial-gradient(circle at 105px 0, var(--cream) 14px, transparent 15px);
+  background-repeat:repeat-x;
+  background-size:120px 15px;
+}
+/* sign */
+.shop-visual .sign{
+  position:absolute;
+  top:24%; left:50%;
+  transform:translateX(-50%);
+  background:var(--cream);
+  border:3px solid var(--purple);
+  border-radius:50%;
+  width:140px; height:140px;
+  display:grid; place-items:center;
+  text-align:center;
+  font-family:var(--f-display);
+  color:var(--purple);
+  font-weight:900;
+  line-height:1;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  animation:bobSign 3s ease-in-out infinite;
+  z-index:3;
+}
+@keyframes bobSign{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(-6px)}
+}
+.shop-visual .sign .star-sym{font-size:36px; color:var(--pink-2)}
+.shop-visual .sign .name{font-size:14px; letter-spacing:.05em; margin-top:2px}
+.shop-visual .sign .tag{font-size:8px; margin-top:3px; opacity:.7}
+
+/* window/door */
+.shop-visual .facade{
+  flex:1;
+  background:linear-gradient(180deg, #d49860 0%, #b87a40 100%);
+  position:relative;
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-end;
+  padding:0 8% 8%;
+}
+.shop-visual .window-frame{
+  width:36%; height:55%;
+  background:linear-gradient(180deg, #5a8a8e 0%, #3d6a6e 100%);
+  border:6px solid var(--cream);
+  border-radius:8px 8px 0 0;
+  position:relative;
+  box-shadow:inset 0 0 20px rgba(0,0,0,.3);
+}
+.shop-visual .window-frame::before,
+.shop-visual .window-frame::after{
+  content:"";
+  position:absolute;
+  background:var(--cream);
+}
+.shop-visual .window-frame::before{
+  top:0; bottom:0; left:50%;
+  width:4px; transform:translateX(-50%);
+}
+.shop-visual .window-frame::after{
+  left:0; right:0; top:50%;
+  height:4px; transform:translateY(-50%);
+}
+.shop-visual .door{
+  width:24%; height:65%;
+  background:linear-gradient(180deg, #4a2570, #3d1f5a);
+  border:6px solid var(--cream);
+  border-radius:50% 50% 0 0 / 30% 30% 0 0;
+  position:relative;
+}
+.shop-visual .door::after{
+  content:"";
+  position:absolute;
+  top:55%; right:18%;
+  width:8px; height:8px;
+  background:var(--gold);
+  border-radius:50%;
+}
+
+/* floating items */
+.shop-visual .float-item{
+  position:absolute;
+  font-size:34px;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));
+}
+.fi1{top:48%; left:8%; animation:floatSlow 4s ease-in-out infinite}
+.fi2{top:55%; right:8%; animation:floatSlow 3.5s ease-in-out infinite reverse}
+
+/* ===========================================
+   SECTION 8 — CTA / FOOTER
+   =========================================== */
+.cta{
+  padding:140px 30px 200px;
+  text-align:center;
+  position:relative;
+}
+.cta h2{
+  font-family:var(--f-display);
+  font-size:clamp(50px, 8vw, 100px);
+  color:var(--purple);
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:1.05;
+}
+.cta h2 em{
+  font-style:italic;
+  color:var(--pink-2);
+  font-family:var(--f-display);
+  font-weight:600;
+}
+.cta-sub{
+  margin-top:20px;
+  font-family:var(--f-hand);
+  font-size:30px;
+  color:var(--green);
+  transform:rotate(-2deg);
+  display:inline-block;
+}
+.cta-btn{
+  display:inline-block;
+  margin-top:40px;
+  background:var(--pink-2);
+  color:#fff;
+  padding:22px 50px;
+  border-radius:999px;
+  font-family:var(--f-body); font-weight:700;
+  font-size:17px;
+  text-decoration:none;
+  box-shadow:0 18px 40px rgba(236,120,152,.4);
+  transition:transform .25s;
+}
+.cta-btn:hover{transform:translateY(-4px) scale(1.04)}
+
+.foot{
+  background:var(--purple);
+  color:var(--cream);
+  padding:80px 30px 120px;
+  text-align:center;
+}
+.foot .brand{
+  font-family:var(--f-display);
+  font-size:60px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+.foot .brand .star{color:var(--pink)}
+.foot .tag{
+  font-family:var(--f-body);
+  font-size:13px;
+  letter-spacing:.3em;
+  margin-top:6px;
+  opacity:.7;
+}
+.foot .links{
+  margin-top:36px;
+  display:flex; flex-wrap:wrap; gap:22px;
+  justify-content:center;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.1em;
+}
+.foot .links a{color:var(--cream); text-decoration:none}
+.foot .copy{
+  margin-top:40px;
+  font-size:11px;
+  opacity:.5;
+}
+
+/* ---------- entry animations ---------- */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .9s ease, transform .9s ease;
+}
+.fade-up.in{opacity:1; transform:translateY(0)}
+
+</style>
+</head>
+<body>
+
+<!-- ===== fixed UI ===== -->
+<div class="logo-mark" aria-label="STARBOWL logo">
+  <div>
+    <div class="star-mini">★</div>
+    <div class="name-mini">STARBOWL</div>
+    <div class="tag-mini">GOOD BOWL,<br>GOOD DAY.</div>
+  </div>
+</div>
+
+<div class="lang-toggle">
+  <span class="active">JP</span>
+  <span>EN</span>
+</div>
+
+<div class="hamburger" aria-label="menu"><span></span></div>
+
+<svg class="mascot" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- cute star mascot like logo -->
+  <g>
+    <path d="M40 8 L48 28 L70 30 L52 44 L58 66 L40 54 L22 66 L28 44 L10 30 L32 28 Z"
+          fill="#fbf5e8" stroke="#3d1f5a" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="33" cy="35" r="2.5" fill="#3d1f5a"/>
+    <circle cx="47" cy="35" r="2.5" fill="#3d1f5a"/>
+    <path d="M33 42 Q40 48 47 42" stroke="#3d1f5a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- sparkles -->
+    <path d="M14 14 L18 20 M22 14 L18 20 M18 24 L18 20" stroke="#ec7898" stroke-width="2" stroke-linecap="round"/>
+    <path d="M62 18 L66 24 M70 18 L66 24 M66 28 L66 24" stroke="#ec7898" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>
+
+<div class="info-bar">
+  <span><b>OPEN</b> 11:00 – 20:00</span>
+  <span class="sep">|</span>
+  <span class="hide-sm"><b>ACCESS</b> 福岡市中央区薬院 X-X-X</span>
+  <span class="sep hide-sm">|</span>
+  <a class="map-btn" href="#">Google Maps →</a>
+  <span class="sep hide-sm">|</span>
+  <span class="hide-sm"><b>TEL</b> 092-XXX-XXXX</span>
+</div>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero">
+  <!-- tropical leaves -->
+  <svg class="leaf leaf-1" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#1f6b3a">
+      <path d="M100 10 Q40 80 30 200 Q70 250 100 290 Q130 250 170 200 Q160 80 100 10 Z" opacity=".9"/>
+      <line x1="100" y1="10" x2="100" y2="290" stroke="#0f4d24" stroke-width="3"/>
+      <g stroke="#0f4d24" stroke-width="2" fill="none">
+        <path d="M100 40 Q70 50 50 90"/>
+        <path d="M100 60 Q65 75 45 130"/>
+        <path d="M100 90 Q60 110 40 170"/>
+        <path d="M100 120 Q60 145 45 210"/>
+        <path d="M100 40 Q130 50 150 90"/>
+        <path d="M100 60 Q135 75 155 130"/>
+        <path d="M100 90 Q140 110 160 170"/>
+        <path d="M100 120 Q140 145 155 210"/>
+      </g>
+    </g>
+  </svg>
+  <svg class="leaf leaf-2" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#2f7d4f">
+      <path d="M100 10 Q40 80 30 200 Q70 250 100 290 Q130 250 170 200 Q160 80 100 10 Z" opacity=".95"/>
+      <line x1="100" y1="10" x2="100" y2="290" stroke="#1f6b3a" stroke-width="3"/>
+      <g stroke="#1f6b3a" stroke-width="2" fill="none">
+        <path d="M100 50 Q70 60 50 100"/>
+        <path d="M100 80 Q65 95 45 150"/>
+        <path d="M100 110 Q60 130 40 190"/>
+        <path d="M100 50 Q130 60 150 100"/>
+        <path d="M100 80 Q135 95 155 150"/>
+        <path d="M100 110 Q140 130 160 190"/>
+      </g>
+    </g>
+  </svg>
+  <svg class="leaf leaf-3" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#1f6b3a">
+      <path d="M100 10 Q40 80 30 200 Q70 250 100 290 Q130 250 170 200 Q160 80 100 10 Z" opacity=".85"/>
+      <line x1="100" y1="10" x2="100" y2="290" stroke="#0f4d24" stroke-width="3"/>
+    </g>
+  </svg>
+  <svg class="leaf leaf-4" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#2f7d4f">
+      <path d="M100 10 Q40 80 30 200 Q70 250 100 290 Q130 250 170 200 Q160 80 100 10 Z" opacity=".9"/>
+      <line x1="100" y1="10" x2="100" y2="290" stroke="#1f6b3a" stroke-width="3"/>
+    </g>
+  </svg>
+
+  <!-- sparkles -->
+  <div class="sparkles" id="sparkles"></div>
+
+  <!-- watermark -->
+  <div class="hero-mark">STAR★BOWL</div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Açaí, Smoothie & More</div>
+    <h1 class="hero-title">
+      STAR<span class="star">★</span>BOWL
+    </h1>
+    <div class="hero-sub">スーパーフードで、カラダの中からキレイに。</div>
+    <div class="hero-bowls">
+      <div class="hero-bowl"></div>
+      <div class="hero-bowl"></div>
+      <div class="hero-bowl"></div>
+    </div>
+  </div>
+
+  <div class="scroll-down">
+    SCROLL
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: CONCEPT ===== -->
+<section class="section-reveal wood-bg" id="concept-sec">
+  <div class="reveal-inner">
+    <div class="concept">
+      <div class="concept-inner">
+        <div class="concept-tag fade-up">Welcome to the bowl life.</div>
+        <h2 class="concept-title fade-up">
+          濃厚アサイーで、<br>
+          <span class="accent">美味しくヘルシー</span>な毎日を。
+        </h2>
+        <div class="concept-sub fade-up">GOOD BOWL, GOOD DAY.</div>
+
+        <div class="concept-body fade-up">
+          <p>朝の一杯が、今日のあなたをつくる。<br>
+          STARBOWLは、ブラジル産の濃厚アサイーをベースに、<br>新鮮なフルーツとグラノーラをぎゅっと詰め込んだ、<br>「美味しい」を妥協しないスーパーフードボウル。</p>
+          <p>食べることが、もっと楽しく。<br>カラダが、もっと喜ぶ。<br>そんな毎日の小さな贅沢を、お届けします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: SHOWCASE ===== -->
+<section class="section-reveal from-top wood-bg" id="showcase-sec">
+  <div class="reveal-inner">
+    <div class="showcase">
+      <div class="showcase-inner">
+        <div class="showcase-text fade-up">
+          <span class="label">— Why Açaí?</span>
+          <h2>The <em>superfood</em><br>that loves you back.</h2>
+          <p>アマゾンの「奇跡の果実」と呼ばれるアサイー。抗酸化作用・鉄分・食物繊維・良質な脂質を一杯にぎゅっと。</p>
+          <ul>
+            <li>#抗酸化作用</li>
+            <li>#鉄分ミネラル</li>
+            <li>#食物繊維</li>
+            <li>#良質な脂質</li>
+            <li>#低GI</li>
+          </ul>
+        </div>
+        <div class="showcase-visual fade-up">
+          <div class="orbit-ring"></div>
+          <div class="showcase-bowl">
+            <div class="topping t1">🍌</div>
+            <div class="topping t2">🥭</div>
+            <div class="topping t3">🥝</div>
+            <div class="topping t4">🍓</div>
+            <div class="topping t5">🫐</div>
+            <div class="topping t6">🍒</div>
+            <div class="topping t7">🥥</div>
+            <div class="topping t8">🌿</div>
+          </div>
+          <!-- floating accent badges -->
+          <div class="orbit-badge orbit-b1">100%<br>NATURAL</div>
+          <div class="orbit-badge orbit-b2">NO<br>SUGAR<br>ADDED</div>
+          <div class="orbit-badge orbit-b3">VEGAN<br>OK</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: MENU ===== -->
+<section class="section-reveal wood-bg" id="menu-sec">
+  <div class="reveal-inner">
+    <div class="menu">
+      <div class="menu-head fade-up">
+        <div class="badge">★ MENU LINEUP ★</div>
+        <h2>ACAÍ B<span class="o"></span>WL</h2>
+        <p>濃厚アサイーで、美味しくヘルシーな毎日を。</p>
+      </div>
+
+      <div class="menu-scroller" id="scroller">
+
+        <article class="menu-card rich">
+          <div>
+            <div class="tag-top">★ SIGNATURE ★</div>
+            <h3>RICH<span class="jp">リッチアサイー</span></h3>
+          </div>
+          <div class="bowl-vis">
+            <span class="topp" style="top:20%; left:20%">🍌</span>
+            <span class="topp" style="top:18%; right:20%">🥭</span>
+            <span class="topp" style="bottom:25%; left:22%">🫐</span>
+            <span class="topp" style="bottom:20%; right:22%">🍒</span>
+            <span class="topp" style="top:48%; left:42%; font-size:28px">🥥</span>
+          </div>
+          <div>
+            <p class="desc">グリークヨーグルト + フルーツの満足感。<br>朝食にぴったりのボリュームボウル。</p>
+            <div class="price">¥1,280<span class="tax">（税込）</span></div>
+          </div>
+          <div class="plus">+</div>
+        </article>
+
+        <article class="menu-card beauty">
+          <div>
+            <div class="tag-top">★ FOR YOUR BEAUTY ★</div>
+            <h3>BEAUTY<span class="jp">ビューティーアサイー</span></h3>
+          </div>
+          <div class="bowl-vis">
+            <span class="topp" style="top:18%; left:22%">🥝</span>
+            <span class="topp" style="top:20%; right:20%">🍓</span>
+            <span class="topp" style="bottom:22%; left:20%">🍌</span>
+            <span class="topp" style="bottom:25%; right:22%">🫐</span>
+            <span class="topp" style="top:45%; left:43%; font-size:28px">🌿</span>
+          </div>
+          <div>
+            <p class="desc">フルーツたっぷり！贅沢な味わい。<br>キレイになりたい日の特別な一杯。</p>
+            <div class="price">¥1,580<span class="tax">（税込）</span></div>
+          </div>
+          <div class="plus">+</div>
+        </article>
+
+        <article class="menu-card my">
+          <div>
+            <div class="tag-top">★ CUSTOMIZE ★</div>
+            <h3>MY<span class="jp">MYアサイー</span></h3>
+          </div>
+          <div class="bowl-vis">
+            <span class="topp" style="top:30%; left:30%; font-size:28px">?</span>
+            <span class="topp" style="bottom:30%; right:30%; font-size:28px">?</span>
+            <span class="topp" style="top:45%; left:42%">✨</span>
+          </div>
+          <div>
+            <p class="desc">好きなトッピングを選んで楽しむ、<br>あなただけの一杯。</p>
+            <div class="price">¥1,100<span class="tax">（税込）</span></div>
+          </div>
+          <div class="plus">+</div>
+        </article>
+
+      </div>
+
+      <div class="menu-nav">
+        <button id="prev">‹</button>
+        <button class="all">All Menu</button>
+        <button id="next">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: SIDE MENU ===== -->
+<section class="section-reveal from-top wood-bg" id="side-sec">
+  <div class="reveal-inner">
+    <div class="side">
+      <div class="side-inner">
+        <div class="side-head fade-up">
+          <div class="deco">— and more —</div>
+          <h2>SIDE MENU</h2>
+        </div>
+        <div class="side-grid">
+          <div class="side-item fade-up">
+            <span class="cat">Smoothie</span>
+            <div class="cup cup-smoothie"></div>
+            <h4>バナナスムージー</h4>
+            <div class="p">¥500</div>
+          </div>
+          <div class="side-item fade-up">
+            <span class="cat">Coffee</span>
+            <div class="cup cup-hot">
+              <div class="steam"><span></span><span></span><span></span></div>
+            </div>
+            <h4>ホットコーヒー</h4>
+            <div class="p">¥280</div>
+          </div>
+          <div class="side-item fade-up">
+            <span class="cat">Iced</span>
+            <div class="cup-iced-wrap">
+              <div class="straw"></div>
+              <div class="cup-iced"></div>
+            </div>
+            <h4>アイスコーヒー</h4>
+            <div class="p">¥350</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: BENEFITS ===== -->
+<section class="section-reveal wood-bg" id="benefit-sec">
+  <div class="reveal-inner">
+    <div class="benefits">
+      <div class="benefits-inner">
+        <div class="benefits-head fade-up">
+          <div class="ribbon">アサイーってすごい！</div>
+          <h2>4 Powers in <em>one bowl.</em></h2>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit fade-up">
+            <div class="ic">🌿</div>
+            <h4>抗酸化作用</h4>
+            <p>アンチエイジング<br>をサポート</p>
+          </div>
+          <div class="benefit fade-up">
+            <div class="ic">❤️</div>
+            <h4>鉄分・ミネラル</h4>
+            <p>貧血予防や<br>むくみ改善に</p>
+          </div>
+          <div class="benefit fade-up">
+            <div class="ic">🍃</div>
+            <h4>食物繊維</h4>
+            <p>腸内環境を整えて<br>スッキリ快調</p>
+          </div>
+          <div class="benefit fade-up">
+            <div class="ic">💪</div>
+            <h4>良質な脂質</h4>
+            <p>エネルギー補給で<br>元気な毎日を</p>
+          </div>
+        </div>
+        <div class="benefits-foot fade-up">→ 朝食やランチ、ヘルシーなおやつにぴったり！ ←</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: SHOP INFO ===== -->
+<section class="section-reveal from-top wood-bg" id="shop-sec">
+  <div class="reveal-inner">
+    <div class="shop">
+      <div class="shop-inner">
+        <div class="shop-text fade-up">
+          <span class="deco">— Visit us —</span>
+          <h2>SHOP</h2>
+          <p>福岡・薬院の街に、ヘルシーな朝とご褒美時間をお届け。お一人でも気軽に立ち寄れる、居心地の良い空間です。</p>
+          <ul class="info-list">
+            <li><span class="k">ADDRESS</span><span>福岡市中央区薬院 X-X-X<br>STARBOWLビル 1F</span></li>
+            <li><span class="k">HOURS</span><span>11:00 – 20:00<br>定休日：火曜日</span></li>
+            <li><span class="k">TEL</span><span>092-XXX-XXXX</span></li>
+            <li><span class="k">ACCESS</span><span>地下鉄七隈線 薬院駅 徒歩 X 分</span></li>
+          </ul>
+          <a class="shop-cta" href="#">
+            Shop info
+            <span class="arrow">→</span>
+          </a>
+        </div>
+        <div class="shop-visual fade-up">
+          <div class="awning"></div>
+          <div class="sign">
+            <div>
+              <div class="star-sym">★</div>
+              <div class="name">STARBOWL</div>
+              <div class="tag">GOOD BOWL, GOOD DAY.</div>
+            </div>
+          </div>
+          <div class="facade">
+            <div class="window-frame"></div>
+            <div class="door"></div>
+            <div class="window-frame"></div>
+          </div>
+          <div class="float-item fi1">🌿</div>
+          <div class="float-item fi2">✨</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: CTA ===== -->
+<section class="section-reveal wood-bg" id="cta-sec">
+  <div class="reveal-inner">
+    <div class="cta">
+      <div class="cta-sub fade-up">— see you at the counter —</div>
+      <h2 class="fade-up">Start your day<br>with a <em>star.</em></h2>
+      <a class="cta-btn fade-up" href="#">Find your bowl →</a>
+    </div>
+
+    <footer class="foot">
+      <div class="brand">STAR<span class="star">★</span>BOWL</div>
+      <div class="tag">GOOD BOWL, GOOD DAY.</div>
+      <div class="links">
+        <a href="#">HOME</a>
+        <a href="#">MENU</a>
+        <a href="#">SHOP</a>
+        <a href="#">ABOUT</a>
+        <a href="#">CONTACT</a>
+        <a href="#">Instagram ↗</a>
+      </div>
+      <div class="copy">© STARBOWL. All Rights Reserved.</div>
+    </footer>
+  </div>
+</section>
+
+<script>
+/* ===== sparkles ===== */
+const sparkleBox = document.getElementById('sparkles');
+for(let i=0;i<24;i++){
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.left = Math.random()*100 + '%';
+  s.style.top = Math.random()*100 + '%';
+  s.style.animationDelay = Math.random()*3 + 's';
+  s.style.opacity = .3 + Math.random()*.6;
+  const colors = ['#f5a4b8','#fbf5e8','#ec7898'];
+  s.style.background = colors[Math.floor(Math.random()*3)];
+  sparkleBox.appendChild(s);
+}
+
+/* ===== circle mask reveal (yuppa-style) =====
+   Trigger when section enters viewport. */
+const sections = document.querySelectorAll('.section-reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('is-in');
+    }
+  });
+},{threshold:.15});
+sections.forEach(s=> io.observe(s));
+
+/* ===== fade-up entry ===== */
+const fadeEls = document.querySelectorAll('.fade-up');
+const io2 = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+    }
+  });
+},{threshold:.2});
+fadeEls.forEach(el=> io2.observe(el));
+
+/* ===== menu nav ===== */
+const scroller = document.getElementById('scroller');
+document.getElementById('prev').onclick = ()=> scroller.scrollBy({left:-420, behavior:'smooth'});
+document.getElementById('next').onclick = ()=> scroller.scrollBy({left: 420, behavior:'smooth'});
+</script>
+
+</body>
+</html>
