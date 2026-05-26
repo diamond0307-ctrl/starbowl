@@ -106,6 +106,26 @@ img{max-width:100%;display:block}
   align-items:center;
   position:relative;
   overflow:hidden;
+  background:var(--acai-deep);
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.04);
+  animation:heroImageDrift 12s ease-in-out infinite alternate;
+  z-index:0;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(44,16,44,.72) 0%,rgba(44,16,44,.42) 42%,rgba(44,16,44,.08) 100%),
+    linear-gradient(180deg,rgba(255,247,234,.04),rgba(44,16,44,.24));
+  z-index:1;
 }
 .hero:after{
   content:"";
@@ -117,7 +137,7 @@ img{max-width:100%;display:block}
   border-radius:50%;
   background:radial-gradient(circle, rgba(183,61,114,.24), rgba(243,168,137,.14) 46%, transparent 70%);
   animation:orbDrift 10s ease-in-out infinite alternate;
-  z-index:-2;
+  z-index:1;
 }
 .hero-logo-stamp{
   position:absolute;
@@ -130,30 +150,78 @@ img{max-width:100%;display:block}
   box-shadow:0 18px 38px rgba(44,16,44,.18);
   transform:rotate(-10deg);
   animation:stampOrbit 6.4s ease-in-out infinite;
-  z-index:1;
+  z-index:3;
+}
+.hero-marquee{
+  position:absolute;
+  left:0;
+  width:100%;
+  overflow:hidden;
+  z-index:2;
+  pointer-events:none;
+  opacity:.78;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);
+}
+.hero-marquee.top{top:104px;transform:rotate(-2.5deg)}
+.hero-marquee.bottom{bottom:104px;transform:rotate(2deg)}
+.hero-track{
+  display:flex;
+  gap:18px;
+  width:max-content;
+  animation:marqueeLeft 34s linear infinite;
+}
+.hero-marquee.bottom .hero-track{
+  animation-name:marqueeRight;
+  animation-duration:40s;
+}
+.hero-product-card{
+  flex:0 0 auto;
+  width:clamp(118px,13vw,184px);
+  aspect-ratio:1;
+  overflow:hidden;
+  border:3px solid rgba(255,253,247,.88);
+  background:#fff;
+  box-shadow:0 18px 36px rgba(44,16,44,.25);
+  transform:translateZ(0);
+}
+.hero-product-card:nth-child(3n+1){border-radius:50%}
+.hero-product-card:nth-child(3n+2){border-radius:28px}
+.hero-product-card:nth-child(3n){border-radius:46% 54% 45% 55% / 58% 42% 58% 42%}
+.hero-product-card img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
 }
 .hero:before{
   content:"";
   position:absolute;
   inset:auto -8% -18% -8%;
   height:42%;
-  background:var(--acai);
+  background:rgba(77,23,71,.82);
   border-radius:50% 50% 0 0 / 34% 34% 0 0;
-  z-index:-1;
+  z-index:1;
 }
 .hero-inner{
+  position:relative;
+  z-index:2;
   width:min(1160px,100%);
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(320px,520px);
+  grid-template-columns:minmax(0,720px);
   gap:48px;
   align-items:center;
+}
+.hero-copy{
+  max-width:720px;
+  color:var(--cream);
+  text-shadow:0 3px 20px rgba(0,0,0,.28);
 }
 .eyebrow{
   display:inline-flex;
   align-items:center;
   gap:10px;
-  color:var(--leaf);
+  color:#cce8d2;
   font-weight:900;
   letter-spacing:.13em;
   font-size:13px;
@@ -163,7 +231,7 @@ img{max-width:100%;display:block}
   content:"";
   width:34px;
   height:2px;
-  background:var(--leaf);
+  background:#cce8d2;
 }
 h1{
   margin:18px 0 18px;
@@ -176,7 +244,7 @@ h1{
   max-width:620px;
   margin:0 0 28px;
   font-size:clamp(16px,1.8vw,20px);
-  color:#493241;
+  color:#fff0dd;
   font-weight:700;
 }
 .hero-actions,.cta-actions{
@@ -198,7 +266,7 @@ h1{
 .primary-insta{background:linear-gradient(135deg,#f6a44f 0%,#d73578 56%,#7437c9 100%)}
 .mini-note{
   margin-top:14px;
-  color:var(--muted);
+  color:#f2d9c7;
   font-size:13px;
   font-weight:700;
 }
@@ -345,7 +413,7 @@ h2{
   position:relative;
 }
 .story-photo:after{
-  content:"STAR BOWL 商品画像";
+  content:"姉妹ママのプロフィール画像";
   position:absolute;
   left:22px;
   bottom:22px;
@@ -379,6 +447,88 @@ h2{
   font-size:24px;
   font-weight:800;
   line-height:1.55;
+}
+.order-menu{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 18%,rgba(39,113,85,.16),transparent 22%),
+    radial-gradient(circle at 88% 18%,rgba(183,61,114,.16),transparent 24%),
+    linear-gradient(180deg,#fffaf0 0%,#f6ead5 100%);
+}
+.order-menu:before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  right:-150px;
+  bottom:-180px;
+  border:34px solid rgba(77,23,71,.1);
+  border-radius:50%;
+}
+.order-menu-layout{
+  display:grid;
+  grid-template-columns:minmax(280px,.9fr) minmax(320px,1.1fr);
+  gap:38px;
+  align-items:center;
+}
+.menu-copy{
+  position:relative;
+  z-index:2;
+}
+.menu-copy .round-badge{
+  width:118px;
+  height:118px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin-bottom:24px;
+  background:var(--acai);
+  color:var(--cream);
+  font-weight:900;
+  text-align:center;
+  line-height:1.35;
+  box-shadow:14px 14px 0 rgba(183,61,114,.18);
+  transform:rotate(-6deg);
+}
+.uber-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:58px;
+  margin-top:26px;
+  padding:14px 28px;
+  border-radius:999px;
+  background:#06c167;
+  color:#fff;
+  font-weight:900;
+  box-shadow:0 18px 34px rgba(6,193,103,.28);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.uber-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 42px rgba(6,193,103,.34);
+}
+.menu-poster-wrap{
+  position:relative;
+  z-index:2;
+  width:min(100%,560px);
+  margin-left:auto;
+}
+.menu-poster-wrap:before{
+  content:"";
+  position:absolute;
+  inset:32px -18px -18px 26px;
+  border-radius:46% 54% 48% 52% / 42% 47% 53% 58%;
+  background:rgba(77,23,71,.16);
+}
+.menu-poster{
+  position:relative;
+  width:100%;
+  border:4px solid var(--acai);
+  border-radius:34px;
+  box-shadow:0 24px 58px rgba(44,16,44,.18);
+  transform:rotate(1.5deg);
 }
 .values{
   background:
@@ -640,6 +790,18 @@ footer b{
   0%,100%{transform:rotate(-3deg) scale(1)}
   50%{transform:rotate(4deg) scale(1.08)}
 }
+@keyframes marqueeLeft{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - 9px))}
+}
+@keyframes marqueeRight{
+  from{transform:translateX(calc(-50% - 9px))}
+  to{transform:translateX(0)}
+}
+@keyframes heroImageDrift{
+  from{transform:scale(1.04) translate(0,0)}
+  to{transform:scale(1.11) translate(-2.5vw,1.8vh)}
+}
 @keyframes stampOrbit{
   0%,100%{transform:translate(0,0) rotate(-10deg) scale(1)}
   35%{transform:translate(18px,-18px) rotate(8deg) scale(1.08)}
@@ -690,9 +852,13 @@ footer b{
   .brand{min-height:58px;font-size:13px}
   .brand-mark{width:46px;height:46px}
   .hero-logo-stamp{right:8%;top:15%;width:82px}
+  .hero-marquee.top{top:92px}
+  .hero-marquee.bottom{bottom:96px}
   .nav-cta .pill{min-height:42px;padding:8px 12px;font-size:12px}
   .hero{padding-top:142px}
   .hero-inner,.story-grid,.menu-layout,.sns-layout{grid-template-columns:1fr}
+  .order-menu-layout{grid-template-columns:1fr}
+  .menu-poster-wrap{margin:0 auto}
   .photo-stack{min-height:460px}
   .photo-main{width:88%;right:0}
   .photo-sub{width:34%;bottom:18px}
@@ -709,6 +875,10 @@ footer b{
   .hero{padding-inline:18px}
   .hero:before{display:none}
   .hero-logo-stamp{display:none}
+  .hero-marquee{opacity:.46}
+  .hero-marquee.top{top:122px}
+  .hero-marquee.bottom{bottom:96px}
+  .hero-product-card{width:112px}
   .hero-actions,.cta-actions{display:grid}
   .primary-line,.primary-insta{width:100%;text-align:center}
   .photo-stack{min-height:390px}
@@ -716,6 +886,8 @@ footer b{
   .photo-main{width:100%;aspect-ratio:1.15;top:188px;padding:0}
   .photo-sub{width:38%;padding:18px}
   .section{padding:72px 18px}
+  .menu-copy .round-badge{width:96px;height:96px;margin-bottom:18px}
+  .menu-poster{border-radius:24px}
   .story-photo{min-height:320px}
   .value-card,.menu-card,.future-card,.sns-card{padding:22px}
   .fixed-cta{bottom:10px;border-radius:24px;grid-template-columns:1fr;padding:8px}
@@ -737,7 +909,41 @@ footer b{
 
 <main id="top">
   <section class="hero">
+    <img class="hero-bg" src="product-bowl.png" alt="STAR BOWLのアサイーボウル商品画像">
+    <div class="hero-overlay"></div>
     <img class="hero-logo-stamp" src="699453496_1379842110647977_4186522768633266347_n.jpg" alt="STARBOWL logo">
+    <div class="hero-marquee top" aria-hidden="true">
+      <div class="hero-track">
+        <span class="hero-product-card"><img src="hero-product-01.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-02.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-03.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-04.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-05.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-06.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-01.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-02.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-03.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-04.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-05.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-06.jpg" alt=""></span>
+      </div>
+    </div>
+    <div class="hero-marquee bottom" aria-hidden="true">
+      <div class="hero-track">
+        <span class="hero-product-card"><img src="hero-product-04.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-05.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-06.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-01.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-02.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-03.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-04.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-05.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-06.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-01.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-02.jpg" alt=""></span>
+        <span class="hero-product-card"><img src="hero-product-03.jpg" alt=""></span>
+      </div>
+    </div>
     <div class="hero-inner">
       <div class="hero-copy reveal">
         <span class="eyebrow">Sisters Acai Bowl Shop</span>
@@ -749,14 +955,39 @@ footer b{
         </div>
         <p class="mini-note">新商品・営業日・健康の小さな学びをSNSで発信予定です。</p>
       </div>
-      <div class="photo-stack reveal" aria-label="写真差し替え枠">
-        <div class="photo-frame photo-main">
-          <img src="profile-sisters.png" alt="STAR BOWLを始める姉妹と子どもたちのプロフィール画像">
-          <div class="photo-label">SISTERS PROFILE</div>
+    </div>
+  </section>
+
+  <section class="section story">
+    <div class="inner story-grid">
+      <div class="story-photo reveal">
+        <img src="profile-sisters.png" alt="STAR BOWLを始める姉妹ママと子どもたちのプロフィール画像">
+      </div>
+      <div class="story-copy reveal">
+        <div class="section-head">
+          <span class="section-kicker">SISTERS MAMA</span>
+          <h2>姉妹ママがつくる、家族の健康をサポートする一杯。</h2>
         </div>
-        <div class="photo-frame photo-sub">
-          <img src="product-bowl.png" alt="フルーツとグラノーラをのせたSTAR BOWLのアサイーボウル商品画像">
+        <p>子育て中の姉妹だからこそ、毎日の食事を選ぶ大変さも、自分のことを後回しにしてしまう気持ちも知っています。</p>
+        <p>STAR BOWLが届けたいのは、ただおいしいアサイーではありません。忙しいママや家族が、無理なく健康を考えられるきっかけです。</p>
+        <div class="quote">ママが自分を大切にできること。<br>それが、家族の健康を支える力になる。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section order-menu">
+    <div class="inner order-menu-layout">
+      <div class="menu-copy reveal">
+        <div class="round-badge">MENU<br>ORDER</div>
+        <div class="section-head">
+          <span class="section-kicker">STAR BOWL MENU</span>
+          <h2>気分に合わせて選べる、アサイーとサイドメニュー。</h2>
         </div>
+        <p>リッチアサイー、ビューティーアサイー、MYアサイーに加えて、スムージーやコーヒーも。忙しい日も、家族のためにも、自分のためにも選びやすいラインナップです。</p>
+        <a class="uber-btn" href="https://www.ubereats.com/jp" target="_blank" rel="noopener">Uber Eatsで注文する</a>
+      </div>
+      <div class="menu-poster-wrap reveal">
+        <img class="menu-poster" src="starbowl-menu.jpg" alt="STAR BOWLのメニュー表">
       </div>
     </div>
   </section>
@@ -818,63 +1049,11 @@ footer b{
     </div>
   </section>
 
-  <section class="section story">
-    <div class="inner story-grid">
-      <div class="story-photo reveal">
-        <img src="product-bowl.png" alt="フルーツとグラノーラをのせたSTAR BOWLのアサイーボウル商品画像">
-      </div>
-      <div class="story-copy reveal">
-        <div class="section-head">
-          <span class="section-kicker">OUR STORY</span>
-          <h2>アサイーを売るだけの場所ではなく、前を向けるきっかけに。</h2>
-        </div>
-        <p>家族の健康を大事にしたい。自分自身も、自分の人生をあきらめたくない。子どもがいても挑戦していいし、ママになってからの夢があってもいい。</p>
-        <p>そんな想いから、子育て中の姉妹がSTAR BOWLを始めます。忙しい人が、無理なく健康的な選択をできる場所。地域の人が、食や健康について気軽に話せる場所を目指しています。</p>
-        <div class="quote">ママが、自分を大事にする場所。<br>家族の健康が変わる、はじまりの一杯。</div>
-      </div>
-    </div>
-  </section>
-
   <section class="section message">
     <div class="inner message-box reveal">
       <span class="section-kicker">BRAND MESSAGE</span>
       <div class="message-main">健康は、特別な人だけのものじゃない。<br>毎日忙しいママこそ、自分を大事にしていい。</div>
       <p>STAR BOWLは、映えるアサイーだけを目指すお店ではありません。アサイーをきっかけに、自分と家族の健康を見つめ直せる場所をつくっていきます。</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="inner">
-      <div class="section-head reveal">
-        <span class="section-kicker">NEXT PLAN</span>
-        <h2>これから広げていきたいこと</h2>
-      </div>
-      <div class="future-grid">
-        <article class="future-card reveal">
-          <h3>健康的なおにぎり</h3>
-          <p>忙しいママや家族のための、手軽でやさしい食事。</p>
-        </article>
-        <article class="future-card reveal">
-          <h3>サラダボウル</h3>
-          <p>ランチにも選びやすい、野菜たっぷりの健康メニュー。</p>
-        </article>
-        <article class="future-card reveal">
-          <h3>血糖値に配慮した食事</h3>
-          <p>食後の眠気や疲れが気になる人へ、知識と選択肢を。</p>
-        </article>
-        <article class="future-card reveal">
-          <h3>ピラティスとの連携</h3>
-          <p>食と運動をつなげて、からだを整える習慣づくりへ。</p>
-        </article>
-        <article class="future-card reveal">
-          <h3>健康ミニセミナー</h3>
-          <p>食べる順番や朝食の選び方など、暮らしに近い学びを。</p>
-        </article>
-        <article class="future-card reveal">
-          <h3>女性コミュニティ</h3>
-          <p>ママや女性が、自分の話をできる地域のつながりへ。</p>
-        </article>
-      </div>
     </div>
   </section>
 
