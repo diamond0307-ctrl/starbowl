@@ -452,37 +452,80 @@ h2{
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 10% 18%,rgba(39,113,85,.16),transparent 22%),
-    radial-gradient(circle at 88% 18%,rgba(183,61,114,.16),transparent 24%),
+    radial-gradient(circle at 10% 18%,rgba(39,113,85,.13),transparent 24%),
+    radial-gradient(circle at 88% 18%,rgba(183,61,114,.13),transparent 26%),
     linear-gradient(180deg,#fffaf0 0%,#f6ead5 100%);
 }
 .order-menu:before{
   content:"";
   position:absolute;
-  width:420px;
-  height:420px;
-  right:-150px;
-  bottom:-180px;
-  border:34px solid rgba(77,23,71,.1);
+  width:360px;
+  height:360px;
+  right:-130px;
+  bottom:-160px;
+  border:28px solid rgba(77,23,71,.08);
   border-radius:50%;
 }
 .order-menu-layout{
-  display:grid;
-  grid-template-columns:minmax(280px,.9fr) minmax(320px,1.1fr);
-  gap:38px;
-  align-items:center;
-}
-.menu-copy{
   position:relative;
   z-index:2;
 }
-.menu-copy .round-badge{
+.menu-board{
+  position:relative;
+  z-index:2;
+  border:3px solid var(--acai);
+  border-radius:8px;
+  background:
+    linear-gradient(180deg,rgba(255,253,247,.94),rgba(255,247,234,.96)),
+    repeating-linear-gradient(90deg,rgba(77,23,71,.04) 0 1px,transparent 1px 15px);
+  box-shadow:0 28px 70px rgba(44,16,44,.16);
+  padding:clamp(22px,4vw,42px);
+  overflow:hidden;
+}
+.menu-board:before,
+.menu-board:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+.menu-board:before{
+  width:190px;
+  height:190px;
+  left:-84px;
+  top:-84px;
+  border:22px solid rgba(39,113,85,.12);
+}
+.menu-board:after{
+  width:150px;
+  height:150px;
+  right:-62px;
+  bottom:-62px;
+  border:18px solid rgba(183,61,114,.12);
+}
+.menu-board-head{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:24px;
+  align-items:end;
+  padding-bottom:24px;
+  border-bottom:2px solid rgba(77,23,71,.2);
+  margin-bottom:26px;
+}
+.menu-title-row{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+.menu-title-row .round-badge{
+  flex:0 0 auto;
   width:118px;
   height:118px;
   border-radius:50%;
   display:grid;
   place-items:center;
-  margin-bottom:24px;
   background:var(--acai);
   color:var(--cream);
   font-weight:900;
@@ -491,12 +534,24 @@ h2{
   box-shadow:14px 14px 0 rgba(183,61,114,.18);
   transform:rotate(-6deg);
 }
+.menu-board .section-head{
+  margin:0;
+}
+.menu-board .section-head h2{
+  max-width:780px;
+  font-size:clamp(32px,3.2vw,46px);
+  line-height:1.28;
+}
+.menu-board-lead{
+  margin:12px 0 0;
+  max-width:780px;
+  color:#5e4958;
+}
 .uber-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   min-height:58px;
-  margin-top:26px;
   padding:14px 28px;
   border-radius:999px;
   background:#06c167;
@@ -509,26 +564,80 @@ h2{
   transform:translateY(-3px);
   box-shadow:0 22px 42px rgba(6,193,103,.34);
 }
-.menu-poster-wrap{
+.menu-board-grid{
   position:relative;
   z-index:2;
-  width:min(100%,560px);
-  margin-left:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
-.menu-poster-wrap:before{
-  content:"";
-  position:absolute;
-  inset:32px -18px -18px 26px;
-  border-radius:46% 54% 48% 52% / 42% 47% 53% 58%;
-  background:rgba(77,23,71,.16);
+.menu-item{
+  display:grid;
+  grid-template-rows:auto 1fr;
+  min-height:100%;
+  overflow:hidden;
+  border:2px solid rgba(77,23,71,.16);
+  border-radius:8px;
+  background:rgba(255,253,247,.9);
+  box-shadow:0 14px 30px rgba(44,16,44,.08);
 }
-.menu-poster{
-  position:relative;
+.menu-item.featured{
+  background:#fffdf7;
+}
+.menu-item img{
   width:100%;
-  border:4px solid var(--acai);
-  border-radius:34px;
-  box-shadow:0 24px 58px rgba(44,16,44,.18);
-  transform:rotate(1.5deg);
+  aspect-ratio:1;
+  object-fit:cover;
+  border-bottom:2px solid rgba(77,23,71,.1);
+}
+.menu-item-body{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:end;
+  padding:16px;
+}
+.menu-item h3{
+  margin:0 0 4px;
+  color:var(--acai);
+  font-family:var(--font-mincho);
+  font-size:clamp(19px,1.8vw,24px);
+  line-height:1.25;
+  word-break:keep-all;
+}
+.menu-item p{
+  margin:0;
+  color:#665263;
+  font-size:14px;
+  line-height:1.55;
+}
+.menu-price{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:94px;
+  min-height:46px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#fff1dc;
+  color:var(--acai);
+  font-family:var(--font-display);
+  font-size:24px;
+  font-weight:900;
+  line-height:1;
+  white-space:nowrap;
+}
+.menu-board-note{
+  position:relative;
+  z-index:2;
+  margin:24px 0 0;
+  padding:14px 18px;
+  border-radius:8px;
+  background:var(--acai);
+  color:var(--cream);
+  text-align:center;
+  font-weight:900;
+  letter-spacing:.04em;
 }
 .values{
   background:
@@ -857,8 +966,9 @@ footer b{
   .nav-cta .pill{min-height:42px;padding:8px 12px;font-size:12px}
   .hero{padding-top:142px}
   .hero-inner,.story-grid,.menu-layout,.sns-layout{grid-template-columns:1fr}
-  .order-menu-layout{grid-template-columns:1fr}
-  .menu-poster-wrap{margin:0 auto}
+  .menu-board-head{grid-template-columns:1fr;align-items:start}
+  .menu-board-grid{grid-template-columns:repeat(2,1fr)}
+  .uber-btn{justify-self:start}
   .photo-stack{min-height:460px}
   .photo-main{width:88%;right:0}
   .photo-sub{width:34%;bottom:18px}
@@ -886,8 +996,15 @@ footer b{
   .photo-main{width:100%;aspect-ratio:1.15;top:188px;padding:0}
   .photo-sub{width:38%;padding:18px}
   .section{padding:72px 18px}
-  .menu-copy .round-badge{width:96px;height:96px;margin-bottom:18px}
-  .menu-poster{border-radius:24px}
+  .menu-board{padding:18px}
+  .menu-title-row{display:block}
+  .menu-title-row .round-badge{width:96px;height:96px;margin-bottom:18px}
+  .menu-board-grid{grid-template-columns:1fr;gap:14px}
+  .menu-item{grid-template-columns:112px 1fr;grid-template-rows:1fr}
+  .menu-item img{height:100%;aspect-ratio:auto;border-bottom:0;border-right:2px solid rgba(77,23,71,.1)}
+  .menu-item-body{grid-template-columns:1fr;align-content:center;padding:14px}
+  .menu-price{min-width:84px;min-height:40px;font-size:21px}
+  .menu-board-note{font-size:13px;line-height:1.6}
   .story-photo{min-height:320px}
   .value-card,.menu-card,.future-card,.sns-card{padding:22px}
   .fixed-cta{
@@ -972,7 +1089,7 @@ footer b{
   <section class="section story">
     <div class="inner story-grid">
       <div class="story-photo reveal">
-        <img src="profile-sisters.png" alt="STAR BOWLを始める姉妹ママと子どもたちのプロフィール画像">
+        <img src="profile-sisters-round.png" alt="STAR BOWLを始める姉妹ママのプロフィール写真">
       </div>
       <div class="story-copy reveal">
         <div class="section-head">
@@ -986,19 +1103,86 @@ footer b{
     </div>
   </section>
 
-  <section class="section order-menu">
-    <div class="inner order-menu-layout">
-      <div class="menu-copy reveal">
-        <div class="round-badge">MENU<br>ORDER</div>
-        <div class="section-head">
-          <span class="section-kicker">STAR BOWL MENU</span>
-          <h2>気分に合わせて選べる、アサイーとサイドメニュー。</h2>
+  <section class="section order-menu" id="menu">
+    <div class="inner order-menu-layout reveal">
+      <div class="menu-board">
+        <div class="menu-board-head">
+          <div class="menu-title-row">
+            <div class="round-badge">MENU<br>ORDER</div>
+            <div>
+              <div class="section-head">
+                <span class="section-kicker">STAR BOWL MENU</span>
+                <h2>気分で選べる、アサイーボウルとサイド。</h2>
+              </div>
+              <p class="menu-board-lead">濃厚アサイーの3つのボウルと、毎日に合わせやすいドリンクメニューを1枚のカードにまとめました。</p>
+            </div>
+          </div>
+          <a class="uber-btn" href="https://www.ubereats.com/jp" target="_blank" rel="noopener">Uber Eatsで注文する</a>
         </div>
-        <p>リッチアサイー、ビューティーアサイー、MYアサイーに加えて、スムージーやコーヒーも。忙しい日も、家族のためにも、自分のためにも選びやすいラインナップです。</p>
-        <a class="uber-btn" href="https://www.ubereats.com/jp" target="_blank" rel="noopener">Uber Eatsで注文する</a>
-      </div>
-      <div class="menu-poster-wrap reveal">
-        <img class="menu-poster" src="starbowl-menu.jpg" alt="STAR BOWLのメニュー表">
+
+        <div class="menu-board-grid" aria-label="STAR BOWL メニュー一覧">
+          <article class="menu-item featured">
+            <img src="hero-product-01.jpg" alt="リッチアサイー">
+            <div class="menu-item-body">
+              <div>
+                <h3>リッチアサイー</h3>
+                <p>グリークヨーグルトとフルーツの満足感。</p>
+              </div>
+              <span class="menu-price">¥1280</span>
+            </div>
+          </article>
+          <article class="menu-item featured">
+            <img src="hero-product-02.jpg" alt="ビューティーアサイー">
+            <div class="menu-item-body">
+              <div>
+                <h3>ビューティーアサイー</h3>
+                <p>フルーツたっぷり、贅沢な味わい。</p>
+              </div>
+              <span class="menu-price">¥1580</span>
+            </div>
+          </article>
+          <article class="menu-item featured">
+            <img src="hero-product-03.jpg" alt="MYアサイー">
+            <div class="menu-item-body">
+              <div>
+                <h3>MYアサイー</h3>
+                <p>好きなトッピングで楽しむ、あなたの一杯。</p>
+              </div>
+              <span class="menu-price">¥1100</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="hero-product-04.jpg" alt="バナナスムージー">
+            <div class="menu-item-body">
+              <div>
+                <h3>バナナスムージー</h3>
+                <p>軽く飲みたい日にぴったり。</p>
+              </div>
+              <span class="menu-price">¥500</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="hero-product-05.jpg" alt="ホットコーヒー">
+            <div class="menu-item-body">
+              <div>
+                <h3>ホットコーヒー</h3>
+                <p>ほっと一息つける定番メニュー。</p>
+              </div>
+              <span class="menu-price">¥280</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="hero-product-06.jpg" alt="アイスコーヒー">
+            <div class="menu-item-body">
+              <div>
+                <h3>アイスコーヒー</h3>
+                <p>アサイーと一緒に楽しめるすっきり感。</p>
+              </div>
+              <span class="menu-price">¥350</span>
+            </div>
+          </article>
+        </div>
+        <p class="menu-board-note">朝食やランチ、ヘルシーなおやつにもぴったり。</p>
       </div>
     </div>
   </section>
